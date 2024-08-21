@@ -1,0 +1,147 @@
+<div class="container">
+  <h1>Mi primer proyecto</h1>
+  <h2>Developer, {{ dev() }}</h2>
+  <p>Total de tareas {{tasks().length}}</p>
+  <ul>
+    <li *ngFor="let task of tasks();index as i">{{i}}. {{task}}</li>
+  </ul>
+  <hr>
+
+  <h2>{{ 'Hola'.repeat(4) }}</h2>
+  <p>La suma de 3 + 3 es {{3+3}}</p>
+  <p>Hola soy {{ dev() }} y mi edad es {{age}}</p>
+  <hr>
+
+  <h2>¿Como angular accede y modifica estas propiedades de html deacuerdo a una vriable asiganada en el componente?</h2>
+  <!-- <img src="{{ img }}" alt="">// 1 modo --> 
+  <img [src]="img" alt="" width="200"><br>
+  <input type="text" [value]="dev()"><br>
+  <button [disabled]="disabled">Click me</button><br>
+  <hr>
+
+  <h2>Información personal</h2>
+  <p>Nombre {{person.name}}</p>
+  <img [src]="person().avatar" alt="" width="200"><br>
+  <button (click)="clickHandler()">Click</button><br>
+  <button (dblclick)="clickHandler()">Doble Click</button>
+  <div>
+    <p>Edad</p>
+    <input type="number" [value]="person().age" (change)="changeHandler($event)"><br>
+  </div>
+  <div>
+    <p>(change) - notifica cuando se hace un blur</p>
+    <input type="text" [value]="person().name" (change)="changeHandler($event)"><br>
+  </div>
+  <div>
+    <p>(keydown) - notifica por cada tecla que se oprima</p>
+    <input type="text" [value]="person().name" (keydown)="keydownHandler($event)"><br>
+  </div>
+  <div>
+    <p>(keydown + shift+t) - notifica por cada tecla que se oprima</p>
+    <input type="text" [value]="person().name" (keydown.shift.t)="clickHandler()"><br>
+  </div>
+  <hr>
+
+  <h2>Add new book in array</h2>
+  <ul>
+    <li *ngFor="let book of books">{{book}}</li>
+  </ul>
+  <button (click)="addBook()">Add</button>
+  <hr>
+
+  <h1>*ngIf</h1>
+  <div *ngIf="dev() === 'Stefh'">
+    mostrar contenido
+  </div>
+  <input type="number" [value]="person().age" (change)="changeAge($event)">
+  <div *ngIf="person().name === 'Nicol' && person().age > 18; else block">
+    mostrar contenido: Mi nombre es {{person().name}} y soy mayor de edad
+  </div>
+  <ng-template #block>
+    Soy {{person().name}}
+  </ng-template>
+  <hr>
+
+  <h1>*ngSwitch</h1>
+  <div [ngSwitch]="person().name">
+    <div *ngSwitchCase="'Nicol'">Nicol</div>
+    <div *ngSwitchCase="'ana'">ana</div>
+    <div *ngSwitchCase="'Juan'">ana</div>
+    <div *ngSwitchDefault>output2</div>
+  </div>
+  <hr>
+
+  <h1>Signals</h1>
+  <input type="text" [value]="dev()" (change)="changeHandler($event)"><br>
+  <hr>
+
+  <!-- <nav>
+    <a class="button" routerLink="/labs">Crisis Center</a> |
+    <a class="button" routerLink="/juego">Heroes</a>
+  </nav> -->
+  <hr>
+
+  <h1>Form control</h1>
+  <input type="color" [formControl]="colorAux">
+  <p>color: {{colorAux.value}}</p>
+  <hr>
+  <svg>
+    <g>
+      <rect x="0" y="0" height="100" width="100" [attr.fill]="colorAux.value"></rect>
+    </g>
+  </svg>
+  <hr>
+
+  <h1>Form control: Validar email</h1>
+  <input type="email" [formControl]="emailAux">
+
+  <h1>[style]</h1>
+  <span for="">Ancho de la caja</span>
+  <input type="number" [formControl]="widthAux">
+  <span class="box" [style.width.px]="widthAux.value"></span>
+  <hr>
+
+  <h1>[class]</h1>
+  <div>
+    <input type="text" [formControl]="nameCtrl">
+    <span class="message-error" [class.show]="nameCtrl.invalid && nameCtrl.touched">Nombre invalido</span>
+  </div>
+  <hr>
+
+  <h1>Nueva sintaxis Angular 17</h1>
+  <h2>If:</h2>
+  @if( dev() === 'Stefh') {
+    <p><strong>Soy Stefh</strong></p>
+  }
+
+  @if(person().name === 'Nicol' && person().age > 18) {
+    <div>mostrar contenido: Mi nombre es {{person().name}} y soy mayor de edad</div>
+  } @else {
+    <div>Soy {{person().name}}</div>
+  }
+  <hr>
+
+  <h2>for:</h2>
+  <ul></ul>
+    @for(task of tasks(); track task; let i= $index){
+      <li>{{i}} {{task}}</li>
+    } @empty {
+      <li><strong>La lista esta vacía</strong></li>
+    }
+  
+  <h2>switch:</h2>
+    @switch (person().name) {
+      @case ('Nicol') {
+        <p>Nicol</p>
+      }
+      @case ('ana') {
+        <p>ana</p>
+      }
+      @case ('Juan') {
+        <p>Juan</p>
+      }
+      @default {
+        <p>Mi nombre no está</p>
+      }
+    }
+</div>
