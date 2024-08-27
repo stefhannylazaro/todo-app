@@ -14,21 +14,6 @@ type statusFilter = 'all' | 'pending' | 'completed';
 })
 export class HomeComponent {
   tasks = signal<Task[]>([
-    // {
-    //   id: Date.now(),
-    //   title: 'Instalar algular CLI',
-    //   completed: true,
-    // },
-    // {
-    //   id: Date.now(),
-    //   title: 'Crear proyecto',
-    //   completed: false,
-    // },
-    // {
-    //   id: Date.now(),
-    //   title: 'Crear componente',
-    //   completed: false,
-    // },
   ]);
   // completedTasks
   // estado derivado, computed stated

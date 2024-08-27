@@ -33,3 +33,44 @@ body {
 :focus {
   outline: 0;
 }
+
+.container {
+  min-width: 230px;
+  max-width: 550px;
+  margin: 0 auto;
+}
+
+.hidden {
+  display: none;
+}
+
+.header {
+  background: rgb(187, 54, 150);
+  background: linear-gradient(45deg, rgba(187, 54, 150, 1) 0%, rgba(165, 110, 212, 1) 100%);
+  padding-bottom: 4rem;
+}
+
+.header {
+  h1 {
+    width: 100%;
+    font-size: 3rem;
+    font-weight: 200;
+    color: white;
+    padding-top: 2rem;
+    margin: 0;
+  }
+  p {
+    margin: 0;
+    color: white;
+    padding-bottom: 1.2rem;
+  }
+}
+
+.todoapp-wrapper {
+  position: relative;
+  top: -40px;
+  background: #fff;
+  border-radius: 8px;
+  box-shadow: 0 2px 4px 0 rgba(0, 0, 0, 0.2), 0 25px 50px 0 rgba(0, 0, 0, 0.1);
+  overflow: hidden;
+}
